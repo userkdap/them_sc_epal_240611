@@ -54,83 +54,39 @@ try:
 except Exception as err:
     print("Σφάλμα στην ανάγνωση του αρχείου εισόδου!", err)
 
-##eispr_olwn = 0.0
-##for branch in range(len(ON)):
-##    print("Υποκατάστημα: {}".format(ON[branch]))
-##    synolo_eispr = 0.0
-##    for day in range(1, IMERES+1):
-##        eispraxi = ""
-##        while not eispraxi.replace('.', '').isdigit():
-##            eispraxi = input("Ημερήσια είσπραξη της {}/6: €".format(day))
-##        eispraxi = float(eispraxi)
-##        synolo_eispr += eispraxi
-##    print("Σύνολο εισπράξεων του μήνα Ιουνίου: €{:.2f}".format(synolo_eispr))
-##    S_POSO.append(synolo_eispr)
-##    eispr_olwn += synolo_eispr
-##mesos_oros_olwn = float(eispr_olwn)/float(len(ON))
-##print("Μέσος όρος εισπράξεων όλων των υποκαταστημάτων τον μήνα Ιούνιο: €{:.2f}".format(mesos_oros_olwn))
-##ypok_megal_mesou_orou = 0
-##print("Υποκαταστήματα που έχουν εισπράξεις μεγαλύτερες ή ίσες του μέσου όρου")
-##print("---------------------------------------------------------------------")
-##for i in range(len(S_POSO)):
-##    if S_POSO[i] >= mesos_oros_olwn:
-##        ypok_megal_mesou_orou += 1
-##        print("{:20}\t€{:8.2f}".format(ON[i], S_POSO[i]))
-##print("Πλήθος υποκαταστημάτων που έχουν εισπράξεις μεγαλύτερες ή ίσες του μέσου όρου: {}".format(ypok_megal_mesou_orou))
-##N = len(S_POSO)
-##for i in range(N–1): # range(0, N–1, 1)
-##    for j in range(N–1 , i , –1): # μέχρι και i–1
-##        if S_POSO[j] > S_POSO[j–1]:
-##            S_POSO[j], S_POSO[j–1] = S_POSO[j–1], S_POSO[j]
-##            ΟΝ[j], ΟΝ[j–1] = ΟΝ[j–1], ΟΝ[j]
-##        elif S_POSO[j] == S_POSO[j–1]:
-##            if ON[j] < ON[j–1]:
-##                ON[j], ON[j–1] = ON[j–1], ON[j]
-##print("{:17}\t{:16}".format("Υποκατάστημα", "Eισπράξεις"))
-##print("-"*len("{:17}\t{:16}".format("Υποκατάστημα", "Eισπράξεις")))
-##for i in range(len(S_POSO)):
-##    print("{:20}\t€{:8.2f}".format(ON[i], S_POSO[i]))
-
-try:
-    print("Ανάγνωση του αρχείου εισόδου...\n")
-    INPUTFILENAME="eispraxeis.txt"
-    with open(INPUTFILENAME, 'r', encoding="utf-8") as inputfile:
-        eispr_olwn = 0.0
-        for branch in range(len(ON)):
-            print("Υποκατάστημα: {}".format(ON[branch]))
-            synolo_eispr = 0.0
-            for day in range(1, IMERES+1):
-                eispraxi = ""
-                while not eispraxi.replace('.', '').isdigit():
-                    eispraxi = inputfile.readline().strip('\n').strip('\ufeff')
-                    print("Ημερήσια είσπραξη της {}/6: €{}".format(day, eispraxi))
-                eispraxi = float(eispraxi)
-                synolo_eispr += eispraxi
-            print("Σύνολο εισπράξεων του μήνα Ιουνίου: €{:.2f}".format(synolo_eispr))
-            S_POSO.append(synolo_eispr)
-            eispr_olwn += synolo_eispr
-        mesos_oros_olwn = float(eispr_olwn)/float(len(ON))
-        print("Μέσος όρος εισπράξεων όλων των υποκαταστημάτων τον μήνα Ιούνιο: €{:.2f}".format(mesos_oros_olwn))
-        ypok_megal_mesou_orou = 0
-        print("Υποκαταστήματα που έχουν εισπράξεις μεγαλύτερες ή ίσες του μέσου όρου")
-        print("---------------------------------------------------------------------")
-        for i in range(len(S_POSO)):
-            if S_POSO[i] >= mesos_oros_olwn:
-                ypok_megal_mesou_orou += 1
-                print("{:20}\t€{:8.2f}".format(ON[i], S_POSO[i]))
-        print("Πλήθος υποκαταστημάτων που έχουν εισπράξεις μεγαλύτερες ή ίσες του μέσου όρου: {}".format(ypok_megal_mesou_orou))
-        N = len(S_POSO)
-        for i in range(N-1): # range(0, N–1, 1)
-            for j in range(N-1 , i , -1): # μέχρι και i–1
-                if S_POSO[j] > S_POSO[j-1]:
-                    S_POSO[j], S_POSO[j-1] = S_POSO[j-1], S_POSO[j]
-                    ON[j], ON[j-1] = ON[j-1], ON[j]
-                elif S_POSO[j] == S_POSO[j-1]:
-                    if ON[j] < ON[j-1]:
-                        ON[j], ON[j-1] = ON[j-1], ON[j]
-        print("{:17}\t{:16}".format("Υποκατάστημα", "Eισπράξεις"))
-        print("-"*len("{:17}\t{:16}".format("Υποκατάστημα", "Eισπράξεις")))
-        for i in range(len(S_POSO)):
-            print("{:20}\t€{:8.2f}".format(ON[i], S_POSO[i]))
-except Exception as err:
-    print("Σφάλμα στην ανάγνωση του αρχείου εισόδου!", err)
+eispr_olwn = 0.0
+for branch in range(len(ON)):
+    print("Υποκατάστημα: {}".format(ON[branch]))
+    synolo_eispr = 0.0
+    for day in range(1, IMERES+1):
+        eispraxi = ""
+        while not eispraxi.replace('.', '').isdigit():
+            eispraxi = input("Ημερήσια είσπραξη της {}/6: €".format(day))
+        eispraxi = float(eispraxi)
+        synolo_eispr += eispraxi
+    print("Σύνολο εισπράξεων του μήνα Ιουνίου: €{:.2f}".format(synolo_eispr))
+    S_POSO.append(synolo_eispr)
+    eispr_olwn += synolo_eispr
+mesos_oros_olwn = float(eispr_olwn)/float(len(ON))
+print("Μέσος όρος εισπράξεων όλων των υποκαταστημάτων τον μήνα Ιούνιο: €{:.2f}".format(mesos_oros_olwn))
+ypok_megal_mesou_orou = 0
+print("Υποκαταστήματα που έχουν εισπράξεις μεγαλύτερες ή ίσες του μέσου όρου")
+print("---------------------------------------------------------------------")
+for i in range(len(S_POSO)):
+    if S_POSO[i] >= mesos_oros_olwn:
+        ypok_megal_mesou_orou += 1
+        print("{:20}\t€{:8.2f}".format(ON[i], S_POSO[i]))
+print("Πλήθος υποκαταστημάτων που έχουν εισπράξεις μεγαλύτερες ή ίσες του μέσου όρου: {}".format(ypok_megal_mesou_orou))
+N = len(S_POSO)
+for i in range(N–1): # range(0, N–1, 1)
+    for j in range(N–1 , i , –1): # μέχρι και i–1
+        if S_POSO[j] > S_POSO[j–1]:
+            S_POSO[j], S_POSO[j–1] = S_POSO[j–1], S_POSO[j]
+            ΟΝ[j], ΟΝ[j–1] = ΟΝ[j–1], ΟΝ[j]
+        elif S_POSO[j] == S_POSO[j–1]:
+            if ON[j] < ON[j–1]:
+                ON[j], ON[j–1] = ON[j–1], ON[j]
+print("{:17}\t{:16}".format("Υποκατάστημα", "Eισπράξεις"))
+print("-"*len("{:17}\t{:16}".format("Υποκατάστημα", "Eισπράξεις")))
+for i in range(len(S_POSO)):
+    print("{:20}\t€{:8.2f}".format(ON[i], S_POSO[i]))
