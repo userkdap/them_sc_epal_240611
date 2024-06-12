@@ -43,64 +43,29 @@ max_teliki_vathmologia = 0
 synolo_diag = 0
 synolo_prokr = 0
 
-##while onomatepwnymo != "ΤΕΛΟΣ":
-##    onomatepwnymo = input("Ονοματεπώνυμο διαγωνιζόμενου: ")
-##    if onomatepwnymo == "ΤΕΛΟΣ":
-##        print("Τερματισμός εισαγωγής δεδομένων")
-##    else:
-##        synolo_diag += 1
-##        synolo_vathmologias = 0
-##        panw_apo_orio = True
-##        for thema in range(1, THEMATA+1):
-##            vathmologia = ""
-##            while not vathmologia.isdigit() \
-##              or int(vathmologia) not in range(1, MONADES+1):
-##                vathmologia = input("Βαθμολογία στο θέμα {}: ".format(thema))
-##            vathmologia = int(vathmologia)
-##            if vathmologia < ORIO:
-##                panw_apo_orio = False
-##            synolo_vathmologias += vathmologia
-##        teliki_vathmologia = synolo_vathmologias/THEMATA
-##        print(teliki_vathmologia) ##
-##        if panw_apo_orio == True and teliki_vathmologia > PROKRISI:
-##            print("Ο διαγωνιζόμενος προκρίνεται στην επόμενη φάση")
-##            synolo_prokr += 1
-##        if max_teliki_vathmologia < teliki_vathmologia:
-##            max_teliki_vathmologia = teliki_vathmologia
-##print("Μεγαλύτερη τελική βαθμολογία: {}".format(max_teliki_vathmologia))
-##print("Ποσοστό των διαγωνιζόμενων που προκρίθηκαν στην επόμενη φάση: {:.1%}".format(synolo_prokr / synolo_diag))
-
-try:
-    print("Ανάγνωση του αρχείου εισόδου...\n")
-    INPUTFILENAME="vathmologies.txt"
-    with open(INPUTFILENAME, 'r', encoding="utf-8") as inputfile:
-        while onomatepwnymo != "ΤΕΛΟΣ":
-            onomatepwnymo = inputfile.readline().strip('\n').strip('\ufeff')
-            print("Ονοματεπώνυμο διαγωνιζόμενου: {}".format(onomatepwnymo))
-            if onomatepwnymo == "ΤΕΛΟΣ":
-                print("Τερματισμός εισαγωγής δεδομένων")
-            else:
-                synolo_diag += 1
-                synolo_vathmologias = 0
-                panw_apo_orio = True
-                for thema in range(1, THEMATA+1):
-                    vathmologia = ""
-                    while not vathmologia.isdigit() \
-                      or int(vathmologia) not in range(1, MONADES+1):
-                        vathmologia = inputfile.readline().strip('\n').strip('\ufeff')
-                        print("Βαθμολογία στο θέμα {}: {}".format(thema, vathmologia))
-                    vathmologia = int(vathmologia)
-                    if vathmologia < ORIO:
-                        panw_apo_orio = False
-                    synolo_vathmologias += vathmologia
-                teliki_vathmologia = float(synolo_vathmologias)/float(THEMATA)
-                print("Τελική βαθμολογία: {}".format(teliki_vathmologia))
-                if panw_apo_orio == True and teliki_vathmologia > PROKRISI:
-                    print("Ο διαγωνιζόμενος προκρίνεται στην επόμενη φάση")
-                    synolo_prokr += 1
-                if max_teliki_vathmologia < teliki_vathmologia:
-                    max_teliki_vathmologia = teliki_vathmologia
-    print("Μεγαλύτερη τελική βαθμολογία: {}".format(max_teliki_vathmologia))
-    print("Ποσοστό των διαγωνιζόμενων που προκρίθηκαν στην επόμενη φάση: {:.1%}".format(synolo_prokr / synolo_diag))
-except Exception as err:
-    print("Σφάλμα στην ανάγνωση του αρχείου εισόδου!", err)
+while onomatepwnymo != "ΤΕΛΟΣ":
+    onomatepwnymo = input("Ονοματεπώνυμο διαγωνιζόμενου: ")
+    if onomatepwnymo == "ΤΕΛΟΣ":
+        print("Τερματισμός εισαγωγής δεδομένων")
+    else:
+        synolo_diag += 1
+        synolo_vathmologias = 0
+        panw_apo_orio = True
+        for thema in range(1, THEMATA+1):
+            vathmologia = ""
+            while not vathmologia.isdigit() \
+              or int(vathmologia) not in range(1, MONADES+1):
+                vathmologia = input("Βαθμολογία στο θέμα {}: ".format(thema))
+            vathmologia = int(vathmologia)
+            if vathmologia < ORIO:
+                panw_apo_orio = False
+            synolo_vathmologias += vathmologia
+        teliki_vathmologia = synolo_vathmologias/THEMATA
+        print("Τελική βαθμολογία: {}".format(teliki_vathmologia))
+        if panw_apo_orio == True and teliki_vathmologia > PROKRISI:
+            print("Ο διαγωνιζόμενος προκρίνεται στην επόμενη φάση")
+            synolo_prokr += 1
+        if max_teliki_vathmologia < teliki_vathmologia:
+            max_teliki_vathmologia = teliki_vathmologia
+print("Μεγαλύτερη τελική βαθμολογία: {}".format(max_teliki_vathmologia))
+print("Ποσοστό των διαγωνιζόμενων που προκρίθηκαν στην επόμενη φάση: {:.1%}".format(synolo_prokr / synolo_diag))
